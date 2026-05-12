@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Force Stylistic Set Font</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
+</head>
+
+<body>
+    <h1>Force Stylistic Set Font</h1>
+    <p>既存のフォントを、Stylistic Setに含まれるフォントに変換します</p>
+
+    <p id="message"></p>
+
+    <div>
+        <input id="font" type="file">
+    </div>
+
+    <form>
+        <table>
+            <thead>
+                <th>対象の文字</th>
+                <th>スタイルのタグ</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input id="codepoint" type="text" required placeholder="c" /></td>
+                    <td><input id="tag" type="text" required placeholder="ss01" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><label><input id="legacy" type="checkbox" />古いWindowsアプリとの互換性を高める</label></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input id="overwrite" type="submit" value="変換する" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <div class="history-box">
+        <h3>変換履歴</h3>
+        <ul id="history"></ul>
+    </div>
+
+    <form>
+        <table>
+            <tbody>
+                <thead>
+                    <th>フォントのファミリー名</th>
+                    <th>表示されるフォント名</th>
+                    <th>フォントのポストスクリプト名</th>
+                </thead>
+                <tr>
+                    <td><input id="font-family" type="text" required placeholder="MyFont" /></td>
+                    <td><input id="font-display" type="text" required placeholder="MyFont Styled" /></td>
+                    <td><input id="font-id" type="text" required placeholder="MyFont-Styled" /></td>
+                </tr>
+                <tr>
+                    <td colspan="3">保存するためには、3項目の名前を決定してください。</td>
+                </tr>
+                <tr>
+                    <td colspan="3">他のフォントファイルを上書きしてしまわないために、これらは一意であることを強く推奨します。</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><input id="saveFont" type="submit" value="保存する" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <div class="notice">
+        <h3>免責事項</h3>
+        <p>フォントLigatureのStylistic Setには対応していません。</p>
+        <p>本ツールはフォントのライセンスを変更するものではありません。</p>
+        <p>必ず変更元のフォントライセンスに従ってください。</p>
+        <p>本ツールで生成されたファイルにて生じたあらゆる問題については一切責任を負いません。</p>
+        <br>
+        <p>本ツールはローカル環境でフォントを加工します。</p>
+        <p>アップロードされたファイルがサーバーへ送信されることはありません。</p>
+    </div>
+
+    <div class="notice">
+        <h3>使い方</h3>
+        <p>1. フォントを選択</p>
+        <p>2. 文字とタグを入力して適用</p>
+        <p>3. 名前を設定して保存</p>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
